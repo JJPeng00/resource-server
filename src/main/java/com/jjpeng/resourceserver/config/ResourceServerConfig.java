@@ -1,5 +1,6 @@
 package com.jjpeng.resourceserver.config;
 
+import com.jjpeng.resourceserver.tokenconverter.AdditionalClaimsAccessTokenConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,7 +35,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
-        JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
+        JwtAccessTokenConverter jwtAccessTokenConverter = new AdditionalClaimsAccessTokenConverter();
         jwtAccessTokenConverter.setVerifierKey(publicKey);
         return jwtAccessTokenConverter;
     }
